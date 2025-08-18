@@ -124,10 +124,13 @@ export function renderOrderSummary() {
         );
         container.remove();
 
+        updateCartQuantity();
+
         renderPaymentSummary();
       });
     });
-
+ 
+    function updateCartQuantity(){
     let cartQuantity = 0;
 
     cart.forEach((cartItem) => {
@@ -135,6 +138,9 @@ export function renderOrderSummary() {
     });
 
     document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
+  }
+
+  updateCartQuantity();
 
   document.querySelectorAll('.js-delivery-option')
     .forEach((element) => {
