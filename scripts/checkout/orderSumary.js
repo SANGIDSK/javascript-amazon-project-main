@@ -128,6 +128,14 @@ export function renderOrderSummary() {
       });
     });
 
+    let cartQuantity = 0;
+
+    cart.forEach((cartItem) => {
+      cartQuantity += cartItem.quantity;
+    });
+
+    document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
+
   document.querySelectorAll('.js-delivery-option')
     .forEach((element) => {
       element.addEventListener('click', () => {
