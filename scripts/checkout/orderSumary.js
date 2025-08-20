@@ -120,14 +120,8 @@ export function renderOrderSummary() {
       link.addEventListener('click', () => {
         const productId = link.dataset.productId;
         removeFromCart(productId);
-
-        const container = document.querySelector(
-          `.js-cart-item-container-${productId}`
-        );
-        container.remove();
-
-        updateCartQuantity();
-
+        
+        renderOrderSummary();
         renderPaymentSummary();
       });
     });
@@ -154,6 +148,7 @@ export function renderOrderSummary() {
 
         if(newQuantity < 0 || newQuantity >= 1000){
           alert('Quantity must be atleast 0 and less than 1000');
+          return;
         }
         updateQuantity(productId,newQuantity);
 
@@ -168,6 +163,7 @@ export function renderOrderSummary() {
       quantityLabel.innerHTML = newQuantity;
 
       updateCartQuantity();
+      renderPaymentSummary();
       });
     });
  
